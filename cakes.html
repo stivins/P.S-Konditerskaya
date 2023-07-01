@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P.S Кондитерская</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <div class="header_nav">
+                <nav>
+                    <a href="index.html" class="nav_link">ГЛАВНАЯ</a>
+                    <a href="cakes.html" class="nav_link">ТОРТЫ</a>
+                    <a href="filling.html" class="nav_link">НАЧИНКИ</a>
+                    <a href="contact.html" class="nav_link">КОНТАКТЫ</a>
+                </nav>
+                <div class="nav_contact">
+                    <img src="assets/img/telephone.png" alt="" class="mass">
+                    <img src="assets/img/telega.png" alt="" class="mass">
+                    <a href="tel:88312301441" class="number">8 (831) 230-14-41</a>
+                </div>
+            </div>
+        </header>
+
+
+        <div class="cont_title"><title class="title">ОФОРМЛЕНИЕ ЗАКАЗА</title></div>
+        
+        <div class="cake_form">
+            <div class="form_column">
+                <input class="input" type="text" placeholder="Ваше ФИО">
+                <input class="input" type="tel" placeholder="Номер телефона">
+                <select class="input select" name="" id="">
+                    <option value="" disabled selected>Начинка</option>
+                    <option value="">Кофейный с грушей</option>
+                    <option value="">Черничный с чизкейком</option>
+                    <option value="">Фисташка-малина</option>
+                    <option value="">Маковый с лимоном и безе</option>
+                    <option value="">Ванильный апельсин-мандарин</option>
+                    <option value="">Тропический с чизкейком</option>
+                    <option value="">Шоколадный со смородиной</option>
+                    <option value="">Шоколадный с орехами</option>
+                    <option value="">Ванильный карамель-банан</option>
+                    <option value="">Морковнфй с брусникой и лимоном</option>
+                    <option value="">Клубничный рафаэлло</option>
+                </select>
+                <input class="input" type="number" placeholder="Вес торта">
+            </div>
+            <div class="form_column2">
+                <div class="file">
+                    <div class="file_title">Эскиз торта</div>
+                    <input class="file_file" type="file" placeholder="Загрузить файл" multiple accept="image/jpeg,image/png">
+                </div>
+                <textarea class="cake_comment" name="comment" placeholder="Комментарий к заказу"></textarea>
+                <button class="form_btn" onclick="showModal()">ОФОРМИТЬ ЗАКАЗ</button>
+            </div>
+        </div>
+
+        <title class="title">ПРИМЕРЫ ДИЗАЙНОВ</title>
+
+        <!--  -->
+        <div class="product-catalog">
+            <div class="sort-search">
+                <div class="sort-product">
+                    <select id="sort-product" v-model="selectOption">
+                        <option selected="true" disabled="disabled" value="">Фильтр товаров</option>
+                        <option v-for="op in sortOption" id="three" :value="op.value" :key="op.value"> {{ op.name}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="block-products">
+                <div class="content">
+                    <div class="block-tovarov" id="block">
+                        <div class="itemclass" v-for="cards in sortedAndSearchCards" >
+                            <img :src='cards.img' class="imgclass">
+                            <!-- <strong class="priceclass">{{cards.price}} p.</strong> -->
+                        </div>
+
+                    </div>
+                    <button id="btn" @click="showCards" :hidden="openAll"> Смотреть все </button>
+                </div>
+            </div>
+        </div>
+        <!--  -->
+
+        <img class="delimiter" src="assets/img/Ellipse.png" alt="">
+
+        <footer>
+            <nav>
+                <div class="nav_column">
+                    <a href="index.html" class="footer_link">ГЛАВНАЯ</a>
+                    <a href="filling.html" class="footer_link">НАЧИНКИ</a>
+                    <a href="" class="footer_link">ДОСТАВКА</a>
+                </div>
+                <div class="nav_column">
+                    <a href="contact.html" class="footer_link">КОНТАКТЫ</a>
+                    <a href="" class="footer_link">ТОРТЫ</a>
+                    <a href="" class="footer_link">ПОЛИТИКА КОНФЕДЕНЦИАЛЬНОСТИ</a>
+                </div>
+            </nav>
+            <div class="contact">
+                <a href="tel:88312301441" class="footer_number number">8 (831) 230-14-41</a>
+                <div class="social">
+                    <a href=""><img src="assets/img/inst.png" alt=""></a>
+                    <a href=""><img src="assets/img/telephone.png" alt=""></a>
+                    <a href=""><img src="assets/img/telega.png" alt=""></a>
+                </div>
+            </div>
+        </footer>
+
+        <div class="modal">
+            <div class="modal_content">
+                <button class="close_btn" onclick="closeModal()">X</button>
+                <div class="modal_main">
+                    <div class="modal_title">Спасибо за заказ!</div>
+                    <div class="modal_subtitle">Мы свяжемся с вами в ближайшие 3 часа для подтверждения заказа</div>
+                </div> 
+            </div>
+    
+        </div>
+    </div>
+    
+
+    <script  src="https://unpkg.com/vue@next"></script>
+    <script src="test.js"></script>
+
+</body>
+</html>
